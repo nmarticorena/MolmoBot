@@ -1,0 +1,118 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "molmobot"
+dynamic = ["version"]
+readme = "README.md"
+description = "Training code for MolmoBot"
+authors = [
+    { name = "Allen Institute for Artificial Intelligence" }
+]
+requires-python = "~=3.11.0"
+license = { file = "LICENSE" }
+dependencies = [
+    "absl-py",
+    "cached_property",
+    "fiddle >= 0.2.5",
+    "numpy",
+    "torch>=2.3.1",
+    "torchvision>=0.18.1",
+    "omegaconf",
+    "rich",
+    "boto3",
+    "google-cloud-storage",
+    "tokenizers",
+    "packaging",
+    "cached_path>=1.6.4",
+    "transformers>=v4.37.1",
+    "datasets",
+    "huggingface_hub",
+    "sentencepiece",
+    "requests",
+    "einops",
+    "einops-exts",
+    "tqdm",
+    "gcsfs==2023.9.2",
+    "accelerate",
+    "imageio",
+    "imageio[pyav]",
+    "decord; sys_platform == 'linux'", # For Linux
+    "eva-decord; sys_platform == 'darwin'", # For macOS
+    "av",
+    "moviepy",
+    "ipykernel",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "mypy>=1.0,<1.4",
+    "black>=23.1,<24.0",
+    "isort>=5.12,<5.13",
+    "pytest",
+    "twine>=1.11.0",
+    "setuptools",
+    "func_timeout",
+    "google-genai",
+    "wheel",
+    "build",
+]
+train = [
+    "wandb",
+    "h5py",
+    "beaker-gantry==3.5.0",
+    "click",
+    "torchmetrics",
+    "smashed[remote]>=0.21.1",
+    "safetensors",
+    "ffmpeg-python",
+    "moviepy",
+    "scikit-learn",
+    "msgspec>=0.14.0",
+    "openai",
+    "editdistance",
+    "zstandard",
+]
+eval = [
+    "molmospaces_resources @ git+https://github.com/allenai/molmospaces-resources.git@c545782005d40ed563c0f0e2fa855789cabf9724#egg=molmospaces_resources",
+    "molmo_spaces @ git+https://github.com/allenai/molmospaces.git@cd23becebcf72dd93a4aa5872a60802d5eff03ef#egg=molmo_spaces",
+    "websockets",
+    "msgpack_numpy",
+    "hydra-core",
+    "torchmetrics",
+    "stringcase",
+    "nltk",
+]
+all = [
+    "molmobot[dev,train,eval]",
+]
+
+[project.urls]
+Homepage = "https://github.com/allenai/molmobot"
+Repository = "https://github.com/allenai/molmobot"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["olmo*"]
+exclude = [
+    "*.tests",
+    "*.tests.*",
+    "tests.*",
+    "tests",
+    "test_fixtures",
+    "test_fixtures.*",
+    "docs*",
+    "scripts*",
+    "olmo_tokenizer.*",
+    "evaluation.*",
+    "pretrain_data.*",
+    "tmp_*",
+    "inference.*",
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "olmo.version.VERSION" }

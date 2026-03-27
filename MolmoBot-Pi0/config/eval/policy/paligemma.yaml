@@ -1,0 +1,14 @@
+defaults:
+  - cameras: real
+  - _self_
+
+type: pi
+action_type: jointpos
+
+model_name: null
+model_dir: hf://allenai/MolmoBot-Pi0-DROID
+checkpoints: null
+use_torch: true
+buffer_length: -1
+compile_mode: max-autotune-no-cudagraphs
+max_joint_delta: 0.2

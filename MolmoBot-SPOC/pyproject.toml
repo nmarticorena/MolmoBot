@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "molmobot-spoc"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "open_clip_torch",
+    "transformers==4.57.1",
+    "lightning",
+    "gymnasium",
+    "scipy",
+    "websockets",
+    "msgpack_numpy",
+    "torchmetrics",
+    "opencv-python",
+    "molmospaces_resources @ git+https://github.com/allenai/molmospaces-resources.git@c545782005d40ed563c0f0e2fa855789cabf9724#egg=molmospaces_resources",
+    "molmo_spaces @ git+https://github.com/allenai/molmospaces.git@cd23becebcf72dd93a4aa5872a60802d5eff03ef#egg=molmo_spaces",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.13.1",
+]
+
+[tool.setuptools]
+packages = [
+    "molmobot_spoc",
+    "molmobot_spoc.architecture",
+    "molmobot_spoc.architecture.action_spaces",
+    "molmobot_spoc.architecture.common",
+    "molmobot_spoc.architecture.config",
+    "molmobot_spoc.eval",
+    "molmobot_spoc.training",
+    "molmobot_spoc.training.config",
+    "molmobot_spoc.utils",
+    "molmobot_spoc.utils.constants",
+]
+
+[tool.setuptools.package-dir]
+molmobot_spoc = "."

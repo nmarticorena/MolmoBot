@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "molmobot-pi0"
+version = "0.1.0"
+description = "Training and evaluation code for MolmoBot-Pi0"
+readme = "README.md"
+requires-python = "~=3.11.0"
+dependencies = [
+    "h5py",
+    "numpy",
+    "pyyaml",
+    "wandb",
+    "tqdm",
+    "torch>=2.7.0,<2.9.0",
+    "beaker-py~=2.5.0",
+    "hydra-core",
+    "pydantic",
+    "decord; sys_platform == 'linux'", # For Linux
+    "eva-decord; sys_platform == 'darwin'", # For macOS
+    "pillow",
+    "openpi @ git+https://github.com/Physical-Intelligence/openpi.git@54cbaee6ae0c010a1ed431871cdaa8f4684ac709#egg=openpi",
+    "transformers==4.53.2",
+    "pytest",
+    "chex",
+    "huggingface_hub",
+]
+[project.optional-dependencies]
+eval = [
+    "molmo-spaces[mujoco] @ git+https://github.com/allenai/molmospaces.git@cd23becebcf72dd93a4aa5872a60802d5eff03ef",
+    "msgpack>=1.0.6",
+    "msgpack-numpy",
+    "websockets",
+    "boto3",
+    "types-boto3",
+    "types-boto3-s3",
+    "python-dotenv",
+    "scipy",
+]
+
+[tool.uv]
+override-dependencies = [
+    "jax[cuda12]==0.5.3; sys_platform == 'linux'",
+    "jax==0.5.3; sys_platform == 'darwin'",
+    "numpy>2.0.0,<2.4.0",
+    "evdev; sys_platform == 'never'",  # not needed and causes errors on ubuntu 24
+]
+
+[tool.setuptools]
+packages = ["molmobot_pi0"]
