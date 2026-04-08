@@ -133,7 +133,11 @@ class SynthManipMolmoInferenceWrapper:
 
         self.model.to_empty(device=self.device)
         load_model_state(self.checkpoint_path, self.model)
-        self.model.to(self.device)
+        # omitting dtype=bfloat16 makes it revert back to float32 for some reason
+        if self.use_bfloat16:
+            self.model.to(self.device, dtype=torch.bfloat16)
+        else:
+            self.model.to(self.device)
         self.model.eval()
         log.info("Model loaded successfully")
 
