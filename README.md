@@ -48,11 +48,11 @@ See [here](MolmoBot/README.md#demo-notebook) to try out MolmoBot interactively! 
 
 # Using MolmoBot Data
 
-To use MolmoBot-Data for training experiments, you will need to download it from hugging face using [bulk_download.py](https://huggingface.co/datasets/allenai/molmobot-data/blob/main/bulk_download.py).
+To use MolmoBot-Data for training experiments, you will need to download it from hugging face using [bulk_download.py](https://huggingface.co/datasets/allenai/molmobot-data/blob/main/bulk_download.py). See [here](https://github.com/allenai/molmospaces/blob/main/docs/data_format.md) for further documentation on the data format.
 
 ## Data postprocessing
 
-Before using any dataset implementations in this repo, you will need to run a [postprocessing script](https://huggingface.co/datasets/allenai/molmobot-data/blob/main/validate_trajectories.py). This filters out any corrupted trajectories, and can optionally check for visibility of certain objects in a given camera. Below is some example usage of the script.
+Before using any dataset implementations in this repo, you will need to run a [postprocessing script](https://huggingface.co/datasets/allenai/molmobot-data/blob/main/validate_trajectories.py). This filters out any corrupted trajectories, and can optionally check for visibility of certain objects in a given camera. Below is some example usage of the script. See [here](https://github.com/allenai/molmospaces/blob/main/docs/data_processing.md) for more information.
 
 Example usage:
 ```bash
