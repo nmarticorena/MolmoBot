@@ -34,7 +34,7 @@ dependencies = [
     "einops",
     "einops-exts",
     "tqdm",
-    "gcsfs==2023.9.2",
+    "gcsfs",
     "accelerate",
     "imageio",
     "imageio[pyav]",
