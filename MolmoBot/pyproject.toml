@@ -76,8 +76,7 @@ train = [
     "zstandard",
 ]
 eval = [
-    "molmospaces_resources @ git+https://github.com/allenai/molmospaces-resources.git@c545782005d40ed563c0f0e2fa855789cabf9724#egg=molmospaces_resources",
-    "molmo_spaces @ git+https://github.com/allenai/molmospaces.git@cd23becebcf72dd93a4aa5872a60802d5eff03ef#egg=molmo_spaces",
+    "molmo_spaces[mujoco] @ git+https://github.com/allenai/molmospaces.git@cd23becebcf72dd93a4aa5872a60802d5eff03ef#egg=molmo_spaces[mujoco]",
     "websockets",
     "msgpack_numpy",
     "hydra-core",
